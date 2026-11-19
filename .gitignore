@@ -5,6 +5,10 @@ node_modules/
 dist/
 dist-entremate/
 dist-entremate.zip
+production-cpanel-entremate/
+production-cpanel-entremate.zip
+.local-backups/
+DEPLOY_ENTRE_MATE_Y_CAFE.md
 .vite/
 
 # Local environment and secrets

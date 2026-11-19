@@ -32,7 +32,7 @@ async function submitRequest() {
     })
 
     feedbackType.value = 'success'
-    feedback.value = 'FormSubmit aceptó tu solicitud. Si es el primer envío, revisa el correo de contacto y confirma la activación para recibir mensajes.'
+    feedback.value = 'El proveedor aceptó la solicitud. Si es el primer envío a este correo, confirma la activación que llegará a hola@entremateycafe.com.'
     name.value = ''
     company.value = ''
     email.value = ''
