@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import logo from '../assets/Logo-EMYC-1.png'
+import logo from '../assets/Logo-EMYC-2.png'
 import ThemeToggle from './ThemeToggle.vue'
 import { openWhatsAppContact } from '../composables/useWhatsAppContact'
 
@@ -21,7 +21,7 @@ function closeMenu() {
   <header class="sticky top-0 z-50 border-b border-forest/10 bg-ivory/95 backdrop-blur-md">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:px-6 lg:px-12">
       <a href="#inicio" class="shrink-0" aria-label="Entre Mate y Café, inicio" @click="closeMenu">
-        <img :src="logo" alt="Entre Mate y Café, donde nacen las ideas" class="theme-logo h-16 w-24 object-contain object-left sm:h-[4.5rem] sm:w-28" />
+        <img :src="logo" alt="Entre Mate y Café, donde nacen las ideas" class="theme-logo h-14 w-44 object-contain object-left sm:h-16 sm:w-56" />
       </a>
 
       <nav class="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Navegación principal">

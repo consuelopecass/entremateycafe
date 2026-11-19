@@ -1,5 +1,5 @@
 <script setup>
-import logoCream from '../assets/Logo-EMYC-1-verde.png'
+import logoCream from '../assets/Logo-EMYC-2.png'
 import { openWhatsAppContact } from '../composables/useWhatsAppContact'
 </script>
 
@@ -27,7 +27,7 @@ import { openWhatsAppContact } from '../composables/useWhatsAppContact'
       <div class="relative mx-auto w-full max-w-lg animate-[rise_.8s_.15s_ease-out_both] lg:ml-auto">
         <div class="absolute -inset-5 rounded-[2.5rem] border border-white/10"></div>
         <div class="relative overflow-hidden rounded-[1.5rem] border border-white/15 bg-white/5 p-4 shadow-2xl backdrop-blur-sm sm:rounded-[2rem] sm:p-8">
-          <img :src="logoCream" alt="Entre Mate y Café: Donde nacen las ideas" class="mx-auto w-full max-w-md" />
+          <img :src="logoCream" alt="Entre Mate y Café: Donde nacen las ideas" class="theme-logo theme-logo-on-dark mx-auto w-full max-w-lg" />
           <div class="mt-2 flex items-center justify-between border-t border-white/15 pt-5 text-xs uppercase tracking-[.17em] text-white/55">
             <span>Marketing & comunicaciones</span><span class="text-[#e5d5b2]">+</span><span>Tecnología</span>
           </div>

@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { openWhatsAppContact } from '../composables/useWhatsAppContact'
-import { sendContactRequest } from '../utils/formspree'
+import { sendContactRequest } from '../utils/formsubmit'
+import { CONTACT_EMAIL } from '../data/contact'
+import ContactLinks from './ContactLinks.vue'
 const name = ref('')
 const company = ref('')
 const email = ref('')
@@ -30,7 +32,7 @@ async function submitRequest() {
     })
 
     feedbackType.value = 'success'
-    feedback.value = '¡Gracias! Tu solicitud fue enviada correctamente. Te responderemos al correo que indicaste.'
+    feedback.value = 'FormSubmit aceptó tu solicitud. Si es el primer envío, revisa el correo de contacto y confirma la activación para recibir mensajes.'
     name.value = ''
     company.value = ''
     email.value = ''
@@ -55,18 +57,19 @@ async function submitRequest() {
         <p class="section-kicker section-kicker-light"><span></span> Hablemos</p>
         <h2 class="mt-5 max-w-md font-display text-4xl font-medium leading-tight tracking-tight sm:text-5xl">Las buenas ideas parten conversando.</h2>
         <p class="mt-6 max-w-md leading-7 text-white/70">Cuéntanos qué estás buscando. Podemos ayudarte a ordenar el desafío y explorar juntos los siguientes pasos.</p>
-        <div class="mt-10 border-t border-white/20 pt-6"><p class="text-sm font-semibold text-[#e5d5b2]">Entre Mate y Café</p><p class="mt-1 text-sm text-white/55">Donde nacen las ideas.</p><button type="button" class="mt-5 inline-flex min-h-11 items-center gap-2 text-left text-sm font-semibold text-white transition hover:text-[#e5d5b2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5d5b2]" @click="openWhatsAppContact">Escríbenos directamente <span aria-hidden="true">↗</span></button><a href="mailto:hola@entremateycafe.cl" class="mt-2 block min-h-11 content-center text-sm font-medium text-white/75 underline-offset-4 transition hover:text-[#e5d5b2] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e5d5b2]">hola@entremateycafe.cl</a></div>
+        <div class="mt-10 border-t border-white/20 pt-6"><p class="text-sm font-semibold text-[#e5d5b2]">Entre Mate y Café</p><p class="mt-1 text-sm text-white/55">Donde nacen las ideas.</p><button type="button" class="mt-5 inline-flex min-h-11 items-center gap-2 text-left text-sm font-semibold text-white transition hover:text-[#e5d5b2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5d5b2]" @click="openWhatsAppContact">Escríbenos directamente <span aria-hidden="true">↗</span></button><ContactLinks class="mt-2" tone="light" /></div>
       </div>
 
       <form ref="formElement" class="p-5 sm:p-8 lg:p-14" :aria-busy="isSubmitting" @submit.prevent="submitRequest">
         <p class="text-sm font-semibold text-forest">Cuéntanos de tu proyecto</p>
-        <p class="mt-2 text-sm leading-6 text-muted">Completa los datos para enviarnos tu solicitud por correo.</p>
+        <p class="mt-2 text-sm leading-6 text-muted">Completa los datos y enviaremos tu solicitud a {{ CONTACT_EMAIL }}.</p>
+        <div class="hidden" aria-hidden="true"><label>Deja este campo vacío<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label></div>
         <fieldset class="contents" :disabled="isSubmitting">
           <div class="mt-7 grid gap-5 sm:grid-cols-2">
             <label class="form-label">Nombre<input v-model.trim="name" class="form-input" type="text" name="name" autocomplete="name" placeholder="Tu nombre" required /></label>
             <label class="form-label">Empresa <span class="font-normal text-muted">(opcional)</span><input v-model.trim="company" class="form-input" type="text" name="company" autocomplete="organization" placeholder="Nombre de la empresa" /></label>
             <label class="form-label sm:col-span-2">Correo electrónico<input v-model.trim="email" class="form-input" type="email" name="email" autocomplete="email" placeholder="nombre@empresa.cl" required /></label>
-            <label class="form-label sm:col-span-2">Servicio de interés<select v-model="interest" class="form-input" name="interest" required><option disabled value="">Selecciona un servicio</option><option>Marketing, comunicaciones y diseño</option><option>Tecnología y soluciones digitales</option><option>Una solución integral</option><option>Quiero conversar primero</option></select></label>
+            <label class="form-label sm:col-span-2">Asunto o motivo de contacto<select v-model="interest" class="form-input" name="interest" required><option disabled value="">Selecciona un motivo</option><option>Marketing, comunicaciones y diseño</option><option>Tecnología y soluciones digitales</option><option>Una solución integral</option><option>Quiero conversar primero</option></select></label>
             <label class="form-label sm:col-span-2">Mensaje<textarea v-model.trim="message" class="form-input min-h-28 resize-y" name="message" placeholder="Cuéntanos brevemente sobre tu desafío" required></textarea></label>
           </div>
         </fieldset>
