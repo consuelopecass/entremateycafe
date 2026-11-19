@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://consuelopecass.github.io/entremateycafe/sitemap.xml
